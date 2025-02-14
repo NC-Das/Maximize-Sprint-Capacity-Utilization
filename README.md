@@ -109,12 +109,18 @@ This file enumerates team members, detailing their trained projects and availabl
 6. Improt Dataset:
    # File paths
 
+```bash
   tasks_file = "tasks_300.csv"
   team_file = "team_members.csv"
+  ```
+  
 
   # Load datasets
+  ```bash
   tasks_data = pd.read_csv(tasks_file)
   team_data = pd.read_csv(team_file)
+```
+  
   
 7.Final Utilization:
   # Running the algorithm
@@ -136,7 +142,8 @@ for team_member_id, task_id in final_best_assignment.items():
 ```
   
 
-8. Result: Every team member is utilized to their full potential as the hours assigned to tasks align with their 
+# Result: 
+Every team member is utilized to their full potential as the hours assigned to tasks align with their 
 overall capacity. The algorithm has successfully allocated tasks while preventing any member from 
 being overwhelmed. Each individual is given tasks related to projects they are qualified for, based on 
 the data provided. The constraints of the genetic algorithm made sure that tasks were assigned only 
