@@ -1,8 +1,15 @@
 # Maximize-Sprint-Capacity-Utilization
+
+The genetic algorithm was implemented to enhance the allocation of tasks for a team during a 14-day 
+sprint. A total of 420 task hours were allocated across five team members. The calculated workload for 
+each team member is shown along with their individual capacity limits. Each team member has been 
+assigned solely tasks from projects for which they are qualified, following the established constraints.
+
 Dataset:
 This Project needs two CSV files as input: 
 1. tasks_300.csv – This file holds information about tasks, including task_id, project_id, and task_hours.
 2. team_members.csv – This file enumerates team members, detailing their trained projects and available capacity.
+   
 Code Overview:
 1.initialize_population: Creates an initial population of randomly generated task assignments.
    def initialize_population(tasks, team_members, pop_size=50):
@@ -17,6 +24,7 @@ Code Overview:
                     assignment[assigned_member].append(task['task_id'])
         population.append(assignment)
     return population 
+    
 2.fitness: Evaluate the efficiency of an assignment by calculating the total assigned hours while ensuring it does not exceed capacity.
   def fitness(assignment, tasks, team_members):
     total_utilization = 0
@@ -26,6 +34,7 @@ Code Overview:
         if assigned_hours <= max_capacity:
             total_utilization += assigned_hours
     return total_utilization
+    
 3.crossover:  Merges two parent solutions to produce a new child solution.
   def crossover(parent1, parent2):
     child = {member: [] for member in parent1.keys()}
@@ -35,6 +44,7 @@ Code Overview:
         else:
             child[member] = parent2[member][:]
     return child 
+    
 4.mutate:  Randomly alters assignments to foster diversity and enhance optimization.
   def mutate(assignment, tasks, team_members, mutation_rate=0.1):
     for member in assignment.keys():
